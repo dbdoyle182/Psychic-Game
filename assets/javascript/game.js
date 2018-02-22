@@ -25,19 +25,16 @@ console.log(computerGuess)
 document.onkeyup = function(event) {
 
 // Determines the key the user pressed   
-    var userGuess = event.key;
+    var userGuess = event.key.toLowerCase();
 
 
-// Fills the guesses made array
-    if (computerChoice.indexOf(userGuess) >= 0 && computerChoice.indexOf(userGuess) <= computerChoice.length) {
+// Fills the guesses made array with character determined to have such qualities
+    if (computerChoice.indexOf(userGuess) >= 0 && computerChoice.indexOf(userGuess) <= computerChoice.length && guessesMade.indexOf(userGuess) < 0) {
         guessesMade.push(userGuess);
         guessesLeft--;
     }
-// Determines if the user selection is a valid character
 
-    if (computerChoice.indexOf(userGuess) < 0) {
-        alert("Please choose a valid letter key!")
-    }
+
 
 
 // What happens if the user guesses correctly
