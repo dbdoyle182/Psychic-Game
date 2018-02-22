@@ -11,7 +11,7 @@ var userGuess
 // Checking all the variables in the console
 
 console.log("The computer guess is: " + computerGuess + " The guesses made are: " + guessesMade + " The user wins: " + userWins + " The user losses: " + userLosses + " The number of guesses left: " + guessesLeft)
-
+console.log(userGuess)
 
 
 // The function that randomly selects the letter from the start
@@ -24,35 +24,33 @@ console.log(computerGuess)
 
 document.onkeyup = function(event) {
 
-    var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
-
+    userGuess = String.fromCharCode(event.keyCode).toLowerCase();
+    guessesMade.push(userGuess)
 
     if (guessesMade.indexOf(userGuess) < 0 && computerChoice.indexOf(userGuess) >= 0) {
         guessesMade[guessesMade.length] = userGuess;
 // This line lowers the guesses left after each guess
         guessesLeft--;
     }
+
 }
+// How to track the user guesses in an array 
 
      
 
 
+// What happens if the user wins
+
+    if (computerChoice.indexOf (userGuess) === computerChoice.indexOf(computerGuess)) {
+        userWins++;
+        guessesLeft = 9;
+        guessesMade = [];
+    }
+
+// What happens if the user runs out of guesses
 
 
 
 
 
-// How to adjust the win count
 
-
-// How to adjust the guess count
-
-
-// Displaying the letters that have been guessed
-
-
-
-// The function that compares the guessed letter and the predetermined letter
-
-
-// The function that resets the the guessed letter log
