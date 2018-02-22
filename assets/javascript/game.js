@@ -5,13 +5,13 @@ var guessesMade = [];
 var userWins = 0;
 var userLosses = 0;
 var guessesLeft = 9;
-var userGuess
+
 
 
 // Checking all the variables in the console
 
 console.log("The computer guess is: " + computerGuess + " The guesses made are: " + guessesMade + " The user wins: " + userWins + " The user losses: " + userLosses + " The number of guesses left: " + guessesLeft)
-console.log(userGuess)
+
 
 
 // The function that randomly selects the letter from the start
@@ -20,34 +20,62 @@ var computerGuess = computerChoice[Math.floor(Math.random()*computerChoice.lengt
 console.log(computerGuess)
 
 
-// How to record the user guess
+// This function is run whenever the user presses a key
 
 document.onkeyup = function(event) {
 
-    userGuess = String.fromCharCode(event.keyCode).toLowerCase();
-    guessesMade.push(userGuess)
+// Determines the key the user pressed   
+    var userGuess = event.key;
 
-    if (guessesMade.indexOf(userGuess) < 0 && computerChoice.indexOf(userGuess) >= 0) {
-        guessesMade[guessesMade.length] = userGuess;
-// This line lowers the guesses left after each guess
+
+// Fills the guesses made array
+    if (computerChoice.indexOf(userGuess) >= 0 && computerChoice.indexOf(userGuess) <= computerChoice.length) {
+        guessesMade.push(userGuess);
         guessesLeft--;
     }
+// Determines if the user selection is a valid character
 
-}
-// How to track the user guesses in an array 
+    if (computerChoice.indexOf(userGuess) < 0) {
+        alert("Please choose a valid letter key!")
+    }
 
-     
 
+// What happens if the user guesses correctly
 
-// What happens if the user wins
-
-    if (computerChoice.indexOf (userGuess) === computerChoice.indexOf(computerGuess)) {
+    if (computerChoice.indexOf(userGuess) === computerChoice.indexOf(computerGuess)) {
         userWins++;
         guessesLeft = 9;
         guessesMade = [];
+        computerGuess = computerChoice[Math.floor(Math.random()*computerChoice.length)];
+
     }
 
-// What happens if the user runs out of guesses
+// If the guesses left reaches zero
+
+    if (guessesLeft === 0) {
+        userLosses++;
+        guessesLeft = 9;
+        guessesMade = [];
+        computerGuess = computerChoice[Math.floor(Math.random()*computerChoice.length)];
+
+    }
+
+
+// Creating the variable to hold HTML
+
+    var html = 
+        "<p>Guess what letter I'm thinking of</p>" +
+        "<p>Wins: " + userWins + "</p>" + 
+        "<p>Losses: " + userLosses + "</p>" +
+        "<p>Guesses Left: " + guessesLeft + "</p>" +
+        "<p>Your guesses so far: " + guessesMade + "</p>"
+
+
+// Linking the html on the page
+
+    document.querySelector("#game").innerHTML = html;
+}
+
 
 
 
