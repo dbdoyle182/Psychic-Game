@@ -5,7 +5,7 @@ var guessesMade = [];
 var userWins = 0;
 var userLosses = 0;
 var guessesLeft = 9;
-var userGuess = null;
+var userGuess
 
 
 // Checking all the variables in the console
