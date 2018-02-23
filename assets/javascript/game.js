@@ -32,6 +32,8 @@ document.onkeyup = function(event) {
     if (computerChoice.indexOf(userGuess) >= 0 && computerChoice.indexOf(userGuess) <= computerChoice.length && guessesMade.indexOf(userGuess) < 0) {
         guessesMade.push(userGuess);
         guessesLeft--;
+        console.log("The computer guess is: " + computerGuess + " The guesses made are: " + guessesMade + " The user wins: " + userWins + " The user losses: " + userLosses + " The number of guesses left: " + guessesLeft);
+        console.log("-----------------");
     }
 
 
